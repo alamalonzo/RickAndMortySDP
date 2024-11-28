@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ProtocolMorty {
-    func getRickMortyModel() async throws -> RickMortyModel
+    func getRickMortyModel(page: String) async throws -> RickMortyModel
 }
 
 //URL
@@ -17,8 +17,8 @@ protocol ProtocolMorty {
 //DECODE: JSON -> MODEL
 
 struct RepositoryMortyAPI: ProtocolMorty, NetworkRepository {
-    func getRickMortyModel() async throws -> RickMortyModel {
-        try await getJSON(request: .customGet(url: .characterURL), model: RickMortyModelDTO.self).mapToModel
+    func getRickMortyModel(page: String) async throws -> RickMortyModel {
+        try await getJSON(request: .customGet(url: .characterURL(page: page)), model: RickMortyModelDTO.self).mapToModel
     }
 }
 

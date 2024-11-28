@@ -12,7 +12,7 @@ final class RickyMortyListVM {
     let repository: ProtocolMorty
     var characters = [CharacterModel]()
     
-    
+    var page: Int = 1
     
     init(repository: ProtocolMorty = RepositoryMortyAPI()) {
         self.repository = repository
@@ -23,7 +23,7 @@ final class RickyMortyListVM {
     
     func loadCharacters() async {
         do {
-            characters = try await repository.getRickMortyModel().results
+            characters = try await repository.getRickMortyModel(page: String(page)).results
         } catch let error as NetWorkError {
             print("error: \(error.localizedDescription)")
         } catch {
