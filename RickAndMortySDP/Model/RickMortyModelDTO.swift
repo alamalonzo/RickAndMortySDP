@@ -39,7 +39,8 @@ struct CharacterDTO: Codable {
             gender: gender,
             image: image,
             created: created,
-            origin: origin.mapToModel
+            origin: origin.mapToModel,
+            isFavorite: false
         )
     }
 }

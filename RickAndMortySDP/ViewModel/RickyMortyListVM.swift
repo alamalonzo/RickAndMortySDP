@@ -11,6 +11,7 @@ import Foundation
 final class RickyMortyListVM {
     let repository: ProtocolMorty
     var characters = [CharacterModel]()
+    var rickInfo: RickMortyModel?
     
     var page: Int = 1
     
@@ -23,11 +24,28 @@ final class RickyMortyListVM {
     
     func loadCharacters() async {
         do {
-            characters = try await repository.getRickMortyModel(page: String(page)).results
+            let rickInfo = try await repository.getRickMortyModel(page: String(page))
+            self.rickInfo = rickInfo
+            characters += rickInfo.results
         } catch let error as NetWorkError {
             print("error: \(error.localizedDescription)")
         } catch {
             print("error \(error)")
+        }
+    }
+    
+    private func isLastItem(character: CharacterModel) -> Bool {
+        characters.last?.id == character.id
+    }
+    
+    func loadNextPage(character: CharacterModel) {
+        guard let info = rickInfo,
+              let _ = info.info.next else { return }
+        if isLastItem(character: character) {
+            page += 1
+            Task {
+                await loadCharacters()
+            }
         }
     }
 }

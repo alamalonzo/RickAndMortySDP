@@ -22,11 +22,3 @@ struct RepositoryMortyAPI: ProtocolMorty, NetworkRepository {
     }
 }
 
-//func getDemo() async throws -> RickMortyModel {
-//    let (data, response) = try await URLSession.shared.getCustomData(urlRequest: URLRequest(url: .characterURL))
-//    
-//    if httpResponse.statusCode == 200 {
-//        //Decodificar el JSON
-//        //else: Error -> StatusCode
-//    }
-//}

@@ -12,7 +12,7 @@ struct RickMortyModel: Codable {
     let results: [CharacterModel]
 }
 
-struct CharacterModel: Codable, Identifiable {
+struct CharacterModel: Codable, Identifiable, Hashable{
     let id: Int
     let name: String
     let status: String
@@ -21,9 +21,10 @@ struct CharacterModel: Codable, Identifiable {
     let image: URL
     let created: Date
     let origin: CharacterOriginModel
+    var isFavorite: Bool
 }
 
-struct CharacterOriginModel: Codable {
+struct CharacterOriginModel: Codable, Hashable {
     let name: String
 }
 

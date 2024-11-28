@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+
 @main
 struct RickAndMortySDPApp: App {
     var body: some Scene {
         WindowGroup {
-            RickyMortyView()
+            HomeView()
         }
     }
 }
