@@ -16,10 +16,13 @@
 		426599B02CF4E31000623D0D /* RepositoryMorty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426599AF2CF4E31000623D0D /* RepositoryMorty.swift */; };
 		426599B32CF4E7E400623D0D /* NetWorkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426599B22CF4E7E400623D0D /* NetWorkError.swift */; };
 		426599B62CF4EAFE00623D0D /* RickyMortyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426599B52CF4EAFE00623D0D /* RickyMortyListVM.swift */; };
+		42BEB56F2CF77F4200C67406 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BEB56E2CF77F4200C67406 /* NetworkRepository.swift */; };
+		42BEB5712CF789AA00C67406 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BEB5702CF789AA00C67406 /* URLRequest.swift */; };
 		42E600982CF62FE500F75738 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E600972CF62FE500F75738 /* CustomDateFormatter.swift */; };
 		42E6009A2CF632A900F75738 /* RickMortyMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 42E600992CF632A900F75738 /* RickMortyMockData.json */; };
 		42E6009C2CF636C900F75738 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6009B2CF636C900F75738 /* PreviewData.swift */; };
 		42E6009E2CF6399500F75738 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6009D2CF6399500F75738 /* URL.swift */; };
+		42E600A02CF63FC200F75738 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6009F2CF63FC200F75738 /* URLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +36,13 @@
 		426599AF2CF4E31000623D0D /* RepositoryMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryMorty.swift; sourceTree = "<group>"; };
 		426599B22CF4E7E400623D0D /* NetWorkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkError.swift; sourceTree = "<group>"; };
 		426599B52CF4EAFE00623D0D /* RickyMortyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickyMortyListVM.swift; sourceTree = "<group>"; };
+		42BEB56E2CF77F4200C67406 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
+		42BEB5702CF789AA00C67406 /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		42E600972CF62FE500F75738 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		42E600992CF632A900F75738 /* RickMortyMockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RickMortyMockData.json; sourceTree = "<group>"; };
 		42E6009B2CF636C900F75738 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		42E6009D2CF6399500F75738 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		42E6009F2CF63FC200F75738 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,9 @@
 			children = (
 				426599B22CF4E7E400623D0D /* NetWorkError.swift */,
 				42E6009D2CF6399500F75738 /* URL.swift */,
+				42E6009F2CF63FC200F75738 /* URLSession.swift */,
+				42BEB56E2CF77F4200C67406 /* NetworkRepository.swift */,
+				42BEB5702CF789AA00C67406 /* URLRequest.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -232,12 +241,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42BEB56F2CF77F4200C67406 /* NetworkRepository.swift in Sources */,
 				426599AD2CF4DE3200623D0D /* RickMortyModel.swift in Sources */,
 				42E600982CF62FE500F75738 /* CustomDateFormatter.swift in Sources */,
+				42E600A02CF63FC200F75738 /* URLSession.swift in Sources */,
 				426599B02CF4E31000623D0D /* RepositoryMorty.swift in Sources */,
 				426599A42CF4DA9600623D0D /* RickyMortyView.swift in Sources */,
 				426599B32CF4E7E400623D0D /* NetWorkError.swift in Sources */,
 				42E6009E2CF6399500F75738 /* URL.swift in Sources */,
+				42BEB5712CF789AA00C67406 /* URLRequest.swift in Sources */,
 				42E6009C2CF636C900F75738 /* PreviewData.swift in Sources */,
 				426599AB2CF4DB5400623D0D /* RickMortyModelDTO.swift in Sources */,
 				426599B62CF4EAFE00623D0D /* RickyMortyListVM.swift in Sources */,
