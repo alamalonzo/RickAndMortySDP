@@ -8,7 +8,7 @@
 import Foundation
 
 struct RepositoryMortyPreview: ProtocolMorty {
-    func getRickMortyModel(page: String) async throws -> RickMortyModel {
+    func getRickMortyModel(page: String, name: String) async throws -> RickMortyModel {
         let url = Bundle.main.url(forResource: "RickMortyMockData", withExtension: "json")!
         let data = try Data(contentsOf: url)
         
@@ -18,6 +18,7 @@ struct RepositoryMortyPreview: ProtocolMorty {
     }
 }
 
+@MainActor
 extension RickyMortyListVM {
     static let preview = RickyMortyListVM(repository: RepositoryMortyPreview())
 }

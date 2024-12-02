@@ -22,6 +22,7 @@ final class RickyMortyListVM {
         }
     }
     
+    @MainActor
     func loadCharacters() async {
         do {
             let rickInfo = try await repository.getRickMortyModel(page: String(page))

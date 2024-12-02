@@ -8,9 +8,13 @@
 import Foundation
 
 extension URLSession {
-    func getCustomData(urlRequest: URLRequest) async throws -> (Data, HTTPURLResponse) {
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
-        guard let httpResponse = response as? HTTPURLResponse else { throw NetWorkError.nonHTTP }
-        return (data, httpResponse)
+    func getCustomData(urlRequest: URLRequest) async throws(NetWorkError) -> (Data, HTTPURLResponse) {
+        do {
+            let (data, response) = try await data(for: urlRequest)
+            guard let httpResponse = response as? HTTPURLResponse else { throw NetWorkError.nonHTTP }
+            return (data, httpResponse)
+        } catch {
+            throw .badURLRequest(error)
+        }
     }
 }

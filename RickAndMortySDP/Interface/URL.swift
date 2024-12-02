@@ -6,20 +6,26 @@
 //
 
 import Foundation
-
+//URL BASE
 let mainUrl = URL(string:"https://rickandmortyapi.com/api")!
 
 extension URL {
-    static func characterURL(page: String) -> URL {
+    //ENDPOINT 1
+    static func characterURL(page: String, name: String) -> URL {
         mainUrl
             .appending(path: "character")
-            .appending(queryItems: [.pageQuery(page: page)])
+            .appending(queryItems: [.pageQuery(page: page),
+                                    .nameQuery(name: name)])
     }
+    
 }
 
 extension URLQueryItem {
     static func pageQuery(page: String) -> URLQueryItem {
         URLQueryItem(name: "page", value: page)
+    }
+    static func nameQuery(name: String) -> URLQueryItem {
+        URLQueryItem(name: "name", value: name)
     }
 }
 
