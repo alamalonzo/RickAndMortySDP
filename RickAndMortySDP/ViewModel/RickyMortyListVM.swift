@@ -13,19 +13,17 @@ final class RickyMortyListVM {
     var characters = [CharacterModel]()
     var rickInfo: RickMortyModel?
     
-    var page: Int = 1
+    private var page: Int = 1
+    var searchedName: String = ""
     
     init(repository: ProtocolMorty = RepositoryMortyAPI()) {
         self.repository = repository
-        Task {
-            await loadCharacters()
-        }
     }
     
     @MainActor
     func loadCharacters() async {
         do {
-            let rickInfo = try await repository.getRickMortyModel(page: String(page))
+            let rickInfo = try await repository.getRickMortyModel(page: String(page), name: searchedName)
             self.rickInfo = rickInfo
             characters += rickInfo.results
         } catch let error as NetWorkError {
@@ -39,6 +37,7 @@ final class RickyMortyListVM {
         characters.last?.id == character.id
     }
     
+    @MainActor
     func loadNextPage(character: CharacterModel) {
         guard let info = rickInfo,
               let _ = info.info.next else { return }
@@ -47,6 +46,15 @@ final class RickyMortyListVM {
             Task {
                 await loadCharacters()
             }
+        }
+    }
+    
+    @MainActor
+    func searchCharacter() {
+        characters.removeAll()
+        
+        Task {
+            await loadCharacters()
         }
     }
 }

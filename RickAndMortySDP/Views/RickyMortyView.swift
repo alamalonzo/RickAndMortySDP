@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RickyMortyView: View {
     @State var vm = RickyMortyListVM()
-    @State var searchText = ""
     
     var body: some View {        
         NavigationStack {
@@ -33,7 +32,13 @@ struct RickyMortyView: View {
             .navigationDestination(for: CharacterModel.self) { character in
                 Text(character.name)
             }
-            .searchable(text: $searchText, prompt: "Search character")
+            .searchable(text: $vm.searchedName, prompt: "Search character")
+            .animation(.easeInOut, value: vm.characters)
+            .onChange(of: vm.searchedName, {
+                Task {
+                    vm.searchCharacter()
+                }
+            })
             .task {
                 await vm.loadCharacters()
             }
