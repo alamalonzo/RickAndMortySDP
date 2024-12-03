@@ -23,7 +23,7 @@ struct RickMortyModelDTO: Codable {
 struct CharacterDTO: Codable {
     let id: Int
     let name: String
-    let status: String
+    let status: CharacterStatus
     let species: String
     let gender: String
     let image: URL

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		424CDDEE2CFF786400EFCE5D /* CustomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CDDED2CFF786400EFCE5D /* CustomToolBar.swift */; };
 		426599A22CF4DA9600623D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4265999C2CF4DA9600623D0D /* Preview Assets.xcassets */; };
 		426599A32CF4DA9600623D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4265999E2CF4DA9600623D0D /* Assets.xcassets */; };
 		426599A42CF4DA9600623D0D /* RickyMortyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4265999F2CF4DA9600623D0D /* RickyMortyView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		424CDDED2CFF786400EFCE5D /* CustomToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolBar.swift; sourceTree = "<group>"; };
 		4265998A2CF4DA7000623D0D /* RickAndMortySDP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortySDP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4265999C2CF4DA9600623D0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4265999E2CF4DA9600623D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		424CDDEC2CFF784200EFCE5D /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				424CDDED2CFF786400EFCE5D /* CustomToolBar.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 		426599812CF4DA7000623D0D = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +135,7 @@
 				4265999F2CF4DA9600623D0D /* RickyMortyView.swift */,
 				FCC4BBE42CF8DFE1002A4257 /* HomeView.swift */,
 				FCC4BBE62CF8E0B1002A4257 /* FavoritesListView.swift */,
+				424CDDEC2CFF784200EFCE5D /* ViewModifier */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +270,7 @@
 				42E6009E2CF6399500F75738 /* URL.swift in Sources */,
 				42BEB5712CF789AA00C67406 /* URLRequest.swift in Sources */,
 				42E6009C2CF636C900F75738 /* PreviewData.swift in Sources */,
+				424CDDEE2CFF786400EFCE5D /* CustomToolBar.swift in Sources */,
 				426599AB2CF4DB5400623D0D /* RickMortyModelDTO.swift in Sources */,
 				426599B62CF4EAFE00623D0D /* RickyMortyListVM.swift in Sources */,
 				426599A52CF4DA9600623D0D /* RickAndMortySDPApp.swift in Sources */,

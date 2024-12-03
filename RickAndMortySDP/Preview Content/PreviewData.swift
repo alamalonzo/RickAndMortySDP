@@ -8,13 +8,17 @@
 import Foundation
 
 struct RepositoryMortyPreview: ProtocolMorty {
-    func getRickMortyModel(page: String, name: String) async throws -> RickMortyModel {
-        let url = Bundle.main.url(forResource: "RickMortyMockData", withExtension: "json")!
-        let data = try Data(contentsOf: url)
-        
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(.customDateFormatter())
-        return try decoder.decode(RickMortyModelDTO.self, from: data).mapToModel
+    func getRickMortyModel(page: String, name: String) async throws(NetWorkError) -> RickMortyModel {
+        do {
+            let url = Bundle.main.url(forResource: "RickMortyMockData", withExtension: "json")!
+            let data = try Data(contentsOf: url)
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(.customDateFormatter())
+            return try decoder.decode(RickMortyModelDTO.self, from: data).mapToModel
+        } catch {
+            throw .generalError(error)
+        }
     }
 }
 

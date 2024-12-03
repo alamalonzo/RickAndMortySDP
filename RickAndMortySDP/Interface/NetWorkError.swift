@@ -12,8 +12,9 @@ enum NetWorkError: LocalizedError {
     case badStatusCode(Int)
     case badURLRequest(Error)
     case badJSONDecoder(Error)
+    case generalError(Error)
     
-    var errorDescription: String? {
+    var errorDescription: String {
         switch self {
         case .nonHTTP:
             "Non and HTTP services"
@@ -23,6 +24,8 @@ enum NetWorkError: LocalizedError {
             "Bad URL request \(error)"
         case .badJSONDecoder(let error):
             "Failed to the code \(error)"
+        case .generalError(let error):
+            "General error: \(error)"
         }
     }
 }

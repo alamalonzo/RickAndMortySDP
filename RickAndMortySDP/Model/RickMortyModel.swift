@@ -7,6 +7,13 @@
 
 import Foundation
 
+enum CharacterStatus: String, CaseIterable, Identifiable, Codable {
+    case alive = "Alive"
+    case dead = "Dead"
+    case unknown = "unknown"
+    var id: Self { self }
+}
+
 struct RickMortyModel: Codable {
     let info: InfoMortyModel
     let results: [CharacterModel]
@@ -15,7 +22,7 @@ struct RickMortyModel: Codable {
 struct CharacterModel: Codable, Identifiable, Hashable{
     let id: Int
     let name: String
-    let status: String
+    let status: CharacterStatus
     let species: String
     let gender: String
     let image: URL
