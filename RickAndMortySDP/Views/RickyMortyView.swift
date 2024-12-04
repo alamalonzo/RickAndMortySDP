@@ -33,19 +33,26 @@ struct RickyMortyView: View {
                 .searchable(text: $vm.searchedName, prompt: "Search character")
                 .animation(.easeInOut, value: vm.characters)
                 .onChange(of: vm.searchedName) {
-                    //                    timer = .scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                    //                       Task {
-                    //                           await vm.searchCharacter()
-                    //                       }
-                    Task {
-                        vm.delay5SecAlberto()
+                    timer = .scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                        Task { @MainActor in
+                            vm.searchCharacter()
+                        }
                     }
+                    /*Task {
+                     vm.delay5SecAlberto()
+                     }*/
                     
+                }
+                .onChange(of: vm.characterStatus) {
+                    vm.resetInitialValue()
+                    Task {
+                        await vm.loadCharacters()
+                    }
                 }
                 .task {
                     await vm.loadCharacters()
                 }
-                .customToolBar()
+                .customToolBar(charStatus: $vm.characterStatus)
         }
         
     }

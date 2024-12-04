@@ -20,19 +20,23 @@ final class RickyMortyListVM {
     var errorMessage = ""
     var showAlert = false
     
+    var characterStatus: CharacterStatus = .all
     
     init(repository: ProtocolMorty = RepositoryMortyAPI()) {
         self.repository = repository
     }
     
-    
+    func resetInitialValue() {
+        page = 1
+        characters.removeAll()
+    }
 }
 
 @MainActor
 extension RickyMortyListVM {
     func loadCharacters() async {
         do {
-            let rickInfo = try await repository.getRickMortyModel(page: String(page), name: searchedName)
+            let rickInfo = try await repository.getRickMortyModel(page: String(page), name: searchedName, status: characterStatus)
             self.rickInfo = rickInfo
             characters += rickInfo.results
         } catch {

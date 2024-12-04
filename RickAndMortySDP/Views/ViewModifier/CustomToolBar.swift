@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CustomToolBar: ViewModifier {
+
+    @Binding var charStatus: CharacterStatus
     
     func body(content: Content) -> some View {
         content
@@ -16,7 +18,7 @@ struct CustomToolBar: ViewModifier {
                     Menu {
                         ForEach(CharacterStatus.allCases) { status in
                             Button(status.rawValue) {
-                                
+                                charStatus = status
                             }
                         }
                         
@@ -32,8 +34,8 @@ struct CustomToolBar: ViewModifier {
 }
 
 extension View {
-    func customToolBar() -> some View {
-        modifier(CustomToolBar())
+    func customToolBar(charStatus: Binding<CharacterStatus>) -> some View {
+        modifier(CustomToolBar(charStatus: charStatus))
     }
 }
 
