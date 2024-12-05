@@ -7,11 +7,16 @@
 
 import Foundation
 
+enum ViewListStatus {
+    case loading, error,loaded
+}
+
 @Observable
 final class RickyMortyListVM {
     let repository: ProtocolMorty
     var characters = [CharacterModel]()
     var rickInfo: RickMortyModel?
+    
     private var searchTask: Task<Void, Never>?
     
     private var page: Int = 1
@@ -21,6 +26,7 @@ final class RickyMortyListVM {
     var showAlert = false
     
     var characterStatus: CharacterStatus = .all
+    var viewListStatus: ViewListStatus = .loading
     
     init(repository: ProtocolMorty = RepositoryMortyAPI()) {
         self.repository = repository
@@ -36,12 +42,18 @@ final class RickyMortyListVM {
 extension RickyMortyListVM {
     func loadCharacters() async {
         do {
+            viewListStatus = .loading
+            //MARK: - Esto simula una carga mas lenta.
+#warning("Esto simula una carga mas lenta.")
+            try? await Task.sleep(for: .seconds(1))
             let rickInfo = try await repository.getRickMortyModel(page: String(page), name: searchedName, status: characterStatus)
             self.rickInfo = rickInfo
             characters += rickInfo.results
+            viewListStatus = .loaded
         } catch {
             errorMessage = error.errorDescription
             showAlert = true
+            viewListStatus = .error
         }
     }
     
@@ -62,6 +74,7 @@ extension RickyMortyListVM {
     
     func searchCharacter() {
         characters.removeAll()
+        
         Task {
             await loadCharacters()
         }

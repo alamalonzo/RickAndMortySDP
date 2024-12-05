@@ -10,49 +10,50 @@ import SwiftUI
 struct RickyMortyView: View {
     @State var vm = RickyMortyListVM()
     @State private var timer: Timer?
+    @Namespace private var namespace
     
     var body: some View {
         NavigationStack {
-            listSearch
-                .alert("Something went wrong", isPresented: $vm.showAlert, actions: {
-                    Button {
-                        Task {
-                            await vm.loadCharacters()
+            VStack {
+                switch vm.viewListStatus {
+                case .loading:
+                    ProgressView()
+                case .error:
+                    CustomErrorView(
+                        errorTitle: "Something went wrong",
+                        errorMessage: vm.errorMessage) {
+                            Task {
+                                await vm.loadCharacters()
+                            }
                         }
-                    } label: {
-                        Text("Reload")
-                    }
-                    
-                }, message: {
-                    Text(vm.errorMessage)
-                })
-                .navigationTitle("Rick Characters")
-                .navigationDestination(for: CharacterModel.self) { character in
-                    Text(character.name)
+                case .loaded:
+                    listSearch
                 }
-                .searchable(text: $vm.searchedName, prompt: "Search character")
-                .animation(.easeInOut, value: vm.characters)
-                .onChange(of: vm.searchedName) {
-                    timer = .scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                        Task { @MainActor in
-                            vm.searchCharacter()
-                        }
-                    }
-                    /*Task {
-                     vm.delay5SecAlberto()
-                     }*/
-                    
-                }
-                .onChange(of: vm.characterStatus) {
-                    vm.resetInitialValue()
-                    Task {
-                        await vm.loadCharacters()
+            }
+            .navigationTitle("Rick Characters")
+            .navigationDestination(for: CharacterModel.self) { character in
+                DetailViewRickAndMorty(character: character)
+                    .navigationTransition(.zoom(sourceID: character, in: namespace))
+            }
+            .searchable(text: $vm.searchedName, prompt: "Search character")
+            .animation(.easeInOut, value: vm.characters)
+            .onChange(of: vm.searchedName) {
+                timer = .scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                    Task { @MainActor in
+                        vm.searchCharacter()
                     }
                 }
-                .task {
+            }
+            .onChange(of: vm.characterStatus) {
+                vm.resetInitialValue()
+                Task {
                     await vm.loadCharacters()
                 }
-                .customToolBar(charStatus: $vm.characterStatus)
+            }
+            .task {
+                await vm.loadCharacters()
+            }
+            .customToolBar(charStatus: $vm.characterStatus)
         }
         
     }
@@ -103,3 +104,6 @@ struct RickyMortyView: View {
 #Preview {
     RickyMortyView(vm: .preview)
 }
+
+
+

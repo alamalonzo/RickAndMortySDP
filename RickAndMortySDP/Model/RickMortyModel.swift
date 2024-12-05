@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+
+
 enum CharacterStatus: String, CaseIterable, Identifiable, Codable {
     case all = "All"
     case alive = "Alive"

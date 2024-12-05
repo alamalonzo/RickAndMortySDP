@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomToolBar: ViewModifier {
-
+    
     @Binding var charStatus: CharacterStatus
     
     func body(content: Content) -> some View {
@@ -17,14 +17,15 @@ struct CustomToolBar: ViewModifier {
                 ToolbarItem(placement: .confirmationAction) {
                     Menu {
                         ForEach(CharacterStatus.allCases) { status in
-                            Button(status.rawValue) {
+                            Button {
                                 charStatus = status
+                            } label: {
+                                LabeledContent(status.rawValue) {
+                                    Image(systemName: charStatus == status ? "checkmark.circle.fill" : "checkmark.circle")
+                                }
                             }
                         }
-                        
-                        
                     } label: {
-                        //                        Image(systemName: "line.3.horizontal.decrease.circle")
                         Label("Status", systemImage:"line.3.horizontal.decrease.circle" )
                     }
                     
