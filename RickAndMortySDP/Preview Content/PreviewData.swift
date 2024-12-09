@@ -22,6 +22,20 @@ struct RepositoryMortyPreview: ProtocolMorty {
     }
 }
 
+extension CharacterModel {
+    static let preview = CharacterModel(
+        id: 1,
+        name: "Alberto",
+        status: .unknown,
+        species: "Humano",
+        gender: "Male",
+        image: URL(string: "https://rickandmortyapi.com/api/character/avatar/6.jpeg")!,
+        created: .now,
+        origin: CharacterOriginModel(name: "Tierra"),
+        isFavorite: false
+    )
+}
+
 @MainActor
 extension RickyMortyListVM {
     static let preview = RickyMortyListVM(repository: RepositoryMortyPreview())

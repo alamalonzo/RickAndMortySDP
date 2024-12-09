@@ -43,7 +43,7 @@ extension RickyMortyListVM {
     func loadCharacters() async {
         do {
             viewListStatus = .loading
-            //MARK: - Esto simula una carga mas lenta.
+
 #warning("Esto simula una carga mas lenta.")
             try? await Task.sleep(for: .seconds(1))
             let rickInfo = try await repository.getRickMortyModel(page: String(page), name: searchedName, status: characterStatus)

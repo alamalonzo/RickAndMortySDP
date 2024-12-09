@@ -58,29 +58,31 @@ struct RickyMortyView: View {
         
     }
     
-    @ViewBuilder
+//    @ViewBuilder
     var listSearch: some View {
-        if vm.characters.isEmpty {
-            ContentUnavailableView("No character found", systemImage: "person", description: Text("No character found with name '\(vm.searchedName)'"))
-        } else {
-            List(vm.characters) { character in
-                NavigationLink(value: character) {
-                    characterCell(character: character)
-                        .onAppear {
-                            vm.loadNextPage(character: character)
-                        }
-                        .swipeActions {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "star")
+        VStack {
+            if vm.characters.isEmpty {
+                ContentUnavailableView("No character found", systemImage: "person", description: Text("No character found with name '\(vm.searchedName)'"))
+            } else {
+                List(vm.characters) { character in
+                    NavigationLink(value: character) {
+                        characterCell(character: character)
+                            .onAppear {
+                                vm.loadNextPage(character: character)
                             }
-                            
-                        }
+                            .swipeActions {
+                                Button {
+                                    
+                                } label: {
+                                    Image(systemName: "star")
+                                }
+                            }
+                    }
                 }
             }
         }
     }
+    
     func characterCell(character: CharacterModel) -> some View {
         HStack {
             VStack(alignment: .leading){
@@ -88,15 +90,9 @@ struct RickyMortyView: View {
                 Text(character.species)
             }
             Spacer()
-            AsyncImage(url: character.image) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100)
-                    .clipShape(.circle)
-            } placeholder: {
-                ProgressView()
-            }
+            CharacterPoster(imageURL: character.image)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .frame(width: 80, height: 80)
         }
     }
 }

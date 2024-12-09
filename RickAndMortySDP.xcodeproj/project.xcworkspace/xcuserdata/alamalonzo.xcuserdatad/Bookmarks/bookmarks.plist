@@ -10,15 +10,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>38</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
 					<string>45</string>
 					<key>StartingColumnNumber</key>
-					<string>37</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
 					<string>45</string>
 					<key>Timestamp</key>
-					<string>755113816.140712</string>
+					<string>755456313.978812</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,13 +34,13 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string> </string>
+				<string></string>
 				<key>leading</key>
 				<string>        do {
             viewListStatus = .loading
-            //MARK: - Esto simula una</string>
+</string>
 				<key>trailing</key>
-				<string>carga mas lenta.
+				<string>
 #warning("Esto simula una carga mas lenta.")
             try? await Task.sleep(for: .seconds(1))
 </string>

@@ -11,18 +11,12 @@ struct DetailViewRickAndMorty: View {
     let character: CharacterModel
     var body: some View {
         VStack {
-            AsyncImage(url: character.image) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-            } placeholder: {
-                ProgressView()
-            }
+            CharacterPoster(imageURL: character.image)
+                .frame(width: 200)
         }
     }
 }
 
-//#Preview {
-//    DetailViewRickAndMorty()
-//}
+#Preview {
+    DetailViewRickAndMorty(character: CharacterModel.preview)
+}
