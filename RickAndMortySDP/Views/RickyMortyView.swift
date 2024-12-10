@@ -28,6 +28,7 @@ struct RickyMortyView: View {
                         }
                 case .loaded:
                     listSearch
+                    
                 }
             }
             .navigationTitle("Rick Characters")
@@ -38,7 +39,8 @@ struct RickyMortyView: View {
             .searchable(text: $vm.searchedName, prompt: "Search character")
             .animation(.easeInOut, value: vm.characters)
             .onChange(of: vm.searchedName) {
-                timer = .scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                timer?.invalidate()
+                timer = .scheduledTimer(withTimeInterval: 0.6, repeats: false) { _ in
                     Task { @MainActor in
                         vm.searchCharacter()
                     }
@@ -51,33 +53,38 @@ struct RickyMortyView: View {
                 }
             }
             .task {
-                await vm.loadCharacters()
+                if vm.characters.isEmpty {
+                    await vm.loadCharacters()
+                }
             }
             .customToolBar(charStatus: $vm.characterStatus)
         }
         
     }
     
-//    @ViewBuilder
+    @ViewBuilder
     var listSearch: some View {
-        VStack {
-            if vm.characters.isEmpty {
-                ContentUnavailableView("No character found", systemImage: "person", description: Text("No character found with name '\(vm.searchedName)'"))
-            } else {
-                List(vm.characters) { character in
-                    NavigationLink(value: character) {
-                        characterCell(character: character)
-                            .onAppear {
-                                vm.loadNextPage(character: character)
+        if vm.characters.isEmpty {
+            ContentUnavailableView("No character found", systemImage: "person", description: Text("No character found with name '\(vm.searchedName)'"))
+        } else {
+            List(vm.characters) { character in
+                NavigationLink(value: character) {
+                    characterCell(character: character)
+                        .onAppear {
+                            vm.loadNextPage(character: character)
+                        }
+                        .swipeActions {
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "star")
                             }
-                            .swipeActions {
-                                Button {
-                                    
-                                } label: {
-                                    Image(systemName: "star")
-                                }
-                            }
-                    }
+                        }
+                }
+            }
+            .overlay(alignment: .bottom) {
+                if vm.newPageLoading {
+                    ProgressView()
                 }
             }
         }

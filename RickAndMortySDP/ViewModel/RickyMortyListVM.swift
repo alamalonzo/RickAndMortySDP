@@ -27,6 +27,7 @@ final class RickyMortyListVM {
     
     var characterStatus: CharacterStatus = .all
     var viewListStatus: ViewListStatus = .loading
+    var newPageLoading: Bool = false
     
     init(repository: ProtocolMorty = RepositoryMortyAPI()) {
         self.repository = repository
@@ -42,18 +43,18 @@ final class RickyMortyListVM {
 extension RickyMortyListVM {
     func loadCharacters() async {
         do {
-            viewListStatus = .loading
-
-#warning("Esto simula una carga mas lenta.")
-            try? await Task.sleep(for: .seconds(1))
             let rickInfo = try await repository.getRickMortyModel(page: String(page), name: searchedName, status: characterStatus)
             self.rickInfo = rickInfo
             characters += rickInfo.results
+            newPageLoading = false
             viewListStatus = .loaded
         } catch {
-            errorMessage = error.errorDescription
-            showAlert = true
-            viewListStatus = .error
+            if searchedName.isEmpty {
+                errorMessage = error.errorDescription
+                viewListStatus = .error
+            } else {
+                viewListStatus = .loaded
+            }
         }
     }
     
@@ -66,15 +67,17 @@ extension RickyMortyListVM {
               let _ = info.info.next else { return }
         if isLastItem(character: character) {
             page += 1
+            newPageLoading.toggle()
             Task {
                 await loadCharacters()
             }
+            
         }
     }
     
     func searchCharacter() {
         characters.removeAll()
-        
+        viewListStatus = .loading
         Task {
             await loadCharacters()
         }

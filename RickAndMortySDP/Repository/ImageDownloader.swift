@@ -50,17 +50,17 @@ actor ImageDownloader {
     }
     
     private func saveImageToCache(url: URL) async throws {
-        let imageCache = cache[url]
+        guard let imageCache = cache[url] else { return }
         let imageName = url.lastPathComponent // ultimo
         let pathCache = URL.cachesDirectory.appending(path: imageName)
         
-        
+    
         if case .downloaded(let image) = imageCache,
            let uiImage = await image.byPreparingThumbnail(ofSize: image.size),
            let heicData = uiImage.heicData() {
             
             try heicData.write(to: urlDoc(url: pathCache), options: .atomic)
-            print(pathCache)
+//            print(pathCache)
             cache.removeValue(forKey: url)
         }
         
