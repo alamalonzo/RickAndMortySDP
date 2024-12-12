@@ -10,9 +10,12 @@ import SwiftUI
 
 @main
 struct RickAndMortySDPApp: App {
+    @State var vm = RickyMortyListVM()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environment(vm)
         }
     }
 }

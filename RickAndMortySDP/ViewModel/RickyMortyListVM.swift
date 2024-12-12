@@ -29,6 +29,10 @@ final class RickyMortyListVM {
     var viewListStatus: ViewListStatus = .loading
     var newPageLoading: Bool = false
     
+    var favoritesCharacters: [CharacterModel] {
+        characters.filter { $0.isFavorite }
+    }
+    
     init(repository: ProtocolMorty = RepositoryMortyAPI()) {
         self.repository = repository
     }
@@ -92,6 +96,12 @@ extension RickyMortyListVM {
                 try await Task.sleep(for: .seconds(0.6))
                 await loadCharacters()
             } catch {}
+        }
+    }
+    
+    func markAsFavorite(character: CharacterModel) {
+        if let index = characters.firstIndex(where: { $0.id == character.id }) {
+            characters[index].isFavorite.toggle()
         }
     }
 }

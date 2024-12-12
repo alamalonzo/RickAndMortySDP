@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct RickyMortyView: View {
-    @State var vm = RickyMortyListVM()
+    @Environment(RickyMortyListVM.self) var vm
     @State private var timer: Timer?
     @Namespace private var namespace
     
     var body: some View {
+        @Bindable var bvm = vm
         NavigationStack {
             VStack {
                 switch vm.viewListStatus {
@@ -36,7 +37,7 @@ struct RickyMortyView: View {
                 DetailViewRickAndMorty(character: character)
                     .navigationTransition(.zoom(sourceID: character, in: namespace))
             }
-            .searchable(text: $vm.searchedName, prompt: "Search character")
+            .searchable(text: $bvm.searchedName, prompt: "Search character")
             .animation(.easeInOut, value: vm.characters)
             .onChange(of: vm.searchedName) {
                 timer?.invalidate()
@@ -57,7 +58,7 @@ struct RickyMortyView: View {
                     await vm.loadCharacters()
                 }
             }
-            .customToolBar(charStatus: $vm.characterStatus)
+            .customToolBar(charStatus: $bvm.characterStatus)
         }
         
     }
@@ -75,7 +76,7 @@ struct RickyMortyView: View {
                         }
                         .swipeActions {
                             Button {
-                                
+                                vm.markAsFavorite(character: character)
                             } label: {
                                 Image(systemName: "star")
                             }
@@ -105,7 +106,8 @@ struct RickyMortyView: View {
 }
 
 #Preview {
-    RickyMortyView(vm: .preview)
+    RickyMortyView()
+        .environment(RickyMortyListVM.preview)
 }
 
 

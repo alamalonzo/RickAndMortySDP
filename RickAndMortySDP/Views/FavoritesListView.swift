@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct FavoritesListView: View {
+struct FavoritesListView: View {    
+    @Environment(RickyMortyListVM.self) var vm
+    
     var body: some View {
-        Text("Favorites")
+        List(vm.favoritesCharacters) { character in
+            Text(character.name)
+        }
     }
 }
 
 #Preview {
     FavoritesListView()
+        .environment(RickyMortyListVM.preview)
 }
