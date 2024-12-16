@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FavoritesListView: View {    
-    @Environment(RickyMortyListVM.self) var vm
+    @Environment(FavoritesVM.self) var vm
     
     var body: some View {
-        List(vm.favoritesCharacters) { character in
+        List(vm.favChars) { character in
             Text(character.name)
         }
     }
@@ -19,5 +19,5 @@ struct FavoritesListView: View {
 
 #Preview {
     FavoritesListView()
-        .environment(RickyMortyListVM.preview)
+        .environment(FavoritesVM())
 }

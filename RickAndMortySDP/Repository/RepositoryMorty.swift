@@ -22,11 +22,7 @@ struct RepositoryMortyAPI: ProtocolMorty, NetworkRepository {
         
     }
     
-    func saveJSON(characters: [CharacterModel]) throws {
-        let url = URL.documentsDirectory.appending(path: "favorites.json")
-        let data = try JSONEncoder().encode(characters)
-        try data.write(to: url, options: [.atomic, .completeFileProtection])
-    }
+   
 }
 
 /*

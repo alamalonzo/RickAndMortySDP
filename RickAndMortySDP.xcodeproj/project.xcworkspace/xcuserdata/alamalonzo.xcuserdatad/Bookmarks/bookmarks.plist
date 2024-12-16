@@ -10,15 +10,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>12</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
 					<string>44</string>
 					<key>StartingColumnNumber</key>
-					<string>12</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
 					<string>44</string>
 					<key>Timestamp</key>
-					<string>755543385.612259</string>
+					<string>756061663.531606</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -36,13 +36,13 @@
 				<key>focused</key>
 				<string></string>
 				<key>leading</key>
-				<string>extension RickyMortyListVM {
-    func loadCharacters() async {
-        do {</string>
+				<string>    }
+}
+</string>
 				<key>trailing</key>
 				<string>
-            let rickInfo = try await repository.getRickMortyModel(page: String(page), name: searchedName, status: characterStatus)
-            self.rickInfo = rickInfo
+@MainActor
+extension RickyMortyListVM {
 </string>
 			</dict>
 			<key>type</key>

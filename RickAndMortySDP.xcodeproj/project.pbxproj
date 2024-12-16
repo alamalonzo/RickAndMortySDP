@@ -10,6 +10,8 @@
 		422BA1832D02203D00287529 /* CustomErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422BA1822D02203D00287529 /* CustomErrorView.swift */; };
 		422BA1852D02242500287529 /* DetailViewRickAndMorty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422BA1842D02242500287529 /* DetailViewRickAndMorty.swift */; };
 		422BA1872D0226D000287529 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422BA1862D0226D000287529 /* ImageDownloader.swift */; };
+		4243A03C2D10969200239D09 /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243A03B2D10969200239D09 /* FavoriteRepository.swift */; };
+		4243A03E2D109B0700239D09 /* FavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243A03D2D109B0700239D09 /* FavoritesVM.swift */; };
 		424CDDEE2CFF786400EFCE5D /* CustomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424CDDED2CFF786400EFCE5D /* CustomToolBar.swift */; };
 		426599A22CF4DA9600623D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4265999C2CF4DA9600623D0D /* Preview Assets.xcassets */; };
 		426599A32CF4DA9600623D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4265999E2CF4DA9600623D0D /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		422BA1822D02203D00287529 /* CustomErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorView.swift; sourceTree = "<group>"; };
 		422BA1842D02242500287529 /* DetailViewRickAndMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewRickAndMorty.swift; sourceTree = "<group>"; };
 		422BA1862D0226D000287529 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		4243A03B2D10969200239D09 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
+		4243A03D2D109B0700239D09 /* FavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVM.swift; sourceTree = "<group>"; };
 		424CDDED2CFF786400EFCE5D /* CustomToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolBar.swift; sourceTree = "<group>"; };
 		4265998A2CF4DA7000623D0D /* RickAndMortySDP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortySDP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4265999C2CF4DA9600623D0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 		426599AE2CF4E2E400623D0D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				4243A03B2D10969200239D09 /* FavoriteRepository.swift */,
 				426599AF2CF4E31000623D0D /* RepositoryMorty.swift */,
 				422BA1862D0226D000287529 /* ImageDownloader.swift */,
 			);
@@ -195,6 +200,7 @@
 			children = (
 				426599B52CF4EAFE00623D0D /* RickyMortyListVM.swift */,
 				42AA5A842D0754480080B417 /* PosterVM.swift */,
+				4243A03D2D109B0700239D09 /* FavoritesVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -297,9 +303,11 @@
 				42BEB5712CF789AA00C67406 /* URLRequest.swift in Sources */,
 				42AA5A872D0759250080B417 /* CharacterPoster.swift in Sources */,
 				42E6009C2CF636C900F75738 /* PreviewData.swift in Sources */,
+				4243A03E2D109B0700239D09 /* FavoritesVM.swift in Sources */,
 				424CDDEE2CFF786400EFCE5D /* CustomToolBar.swift in Sources */,
 				426599AB2CF4DB5400623D0D /* RickMortyModelDTO.swift in Sources */,
 				426599B62CF4EAFE00623D0D /* RickyMortyListVM.swift in Sources */,
+				4243A03C2D10969200239D09 /* FavoriteRepository.swift in Sources */,
 				422BA1852D02242500287529 /* DetailViewRickAndMorty.swift in Sources */,
 				426599A52CF4DA9600623D0D /* RickAndMortySDPApp.swift in Sources */,
 			);

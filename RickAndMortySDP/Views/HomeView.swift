@@ -26,4 +26,6 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environment(RickyMortyListVM.preview)
+        .environment(FavoritesVM())
 }

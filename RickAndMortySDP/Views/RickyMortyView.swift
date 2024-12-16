@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RickyMortyView: View {
     @Environment(RickyMortyListVM.self) var vm
+    @Environment(FavoritesVM.self) var favVM
+    
     @State private var timer: Timer?
     @Namespace private var namespace
     
@@ -76,9 +78,11 @@ struct RickyMortyView: View {
                         }
                         .swipeActions {
                             Button {
-                                vm.markAsFavorite(character: character)
+//                                vm.markAsFavorite(character: character)
+                                favVM.saveFavorite(character: character)
                             } label: {
-                                Image(systemName: "star")
+                                Image(systemName: favVM.checkFavorite(character: character) ? "star" : "person")
+                                    .tint(favVM.checkFavorite(character: character) ? .yellow : .gray)
                             }
                         }
                 }
@@ -98,6 +102,8 @@ struct RickyMortyView: View {
                 Text(character.species)
             }
             Spacer()
+            Image(systemName: "star.fill")
+                .foregroundStyle(favVM.checkFavorite(character: character) ? .yellow : .clear)
             CharacterPoster(imageURL: character.image)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .frame(width: 80, height: 80)
@@ -108,6 +114,7 @@ struct RickyMortyView: View {
 #Preview {
     RickyMortyView()
         .environment(RickyMortyListVM.preview)
+        .environment(FavoritesVM())
 }
 
 
