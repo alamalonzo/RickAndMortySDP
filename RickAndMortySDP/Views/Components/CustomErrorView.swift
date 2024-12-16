@@ -2,7 +2,7 @@
 //  CustomErrorView.swift
 //  RickAndMortySDP
 //
-//  Created by Alam Alonzo on 5/12/24.
+//  Created by  on 5/12/24.
 //
 
 import SwiftUI

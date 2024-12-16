@@ -11,8 +11,16 @@ struct FavoritesListView: View {
     @Environment(FavoritesVM.self) var vm
     
     var body: some View {
-        List(vm.favChars) { character in
-            Text(character.name)
+        NavigationStack {
+            List(vm.favChars) { character in
+                NavigationLink(value: character) {
+                    CharacterCell(character: character)
+                }
+            }
+            .navigationTitle("Favorites")
+            .navigationDestination(for: CharacterModel.self) { character in
+                DetailViewRickAndMorty(character: character)
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 //  CustomToolBar.swift
 //  RickAndMortySDP
 //
-//  Created by Alam Alonzo on 3/12/24.
+//  Created by  on 3/12/24.
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  RickyMortyListVM.swift
 //  RickAndMortySDP
 //
-//  Created by Alam Alonzo on 25/11/24.
+//  Created by  on 25/11/24.
 //
 
 import Foundation
@@ -99,11 +99,7 @@ extension RickyMortyListVM {
         }
     }
     
-    func markAsFavorite(character: CharacterModel) {
-        if let index = characters.firstIndex(where: { $0.id == character.id }) {
-            characters[index].isFavorite.toggle()
-        }
-    }
+
 }
 
 

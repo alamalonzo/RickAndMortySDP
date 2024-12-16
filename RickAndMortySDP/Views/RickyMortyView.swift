@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  RickAndMortySDP
 //
-//  Created by Alam Alonzo on 25/11/24.
+//  Created by  on 25/11/24.
 //
 
 import SwiftUI
@@ -72,19 +72,7 @@ struct RickyMortyView: View {
         } else {
             List(vm.characters) { character in
                 NavigationLink(value: character) {
-                    characterCell(character: character)
-                        .onAppear {
-                            vm.loadNextPage(character: character)
-                        }
-                        .swipeActions {
-                            Button {
-//                                vm.markAsFavorite(character: character)
-                                favVM.saveFavorite(character: character)
-                            } label: {
-                                Image(systemName: favVM.checkFavorite(character: character) ? "star" : "person")
-                                    .tint(favVM.checkFavorite(character: character) ? .yellow : .gray)
-                            }
-                        }
+                    CharacterCell(character: character)
                 }
             }
             .overlay(alignment: .bottom) {
@@ -95,20 +83,7 @@ struct RickyMortyView: View {
         }
     }
     
-    func characterCell(character: CharacterModel) -> some View {
-        HStack {
-            VStack(alignment: .leading){
-                Text(character.name)
-                Text(character.species)
-            }
-            Spacer()
-            Image(systemName: "star.fill")
-                .foregroundStyle(favVM.checkFavorite(character: character) ? .yellow : .clear)
-            CharacterPoster(imageURL: character.image)
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .frame(width: 80, height: 80)
-        }
-    }
+
 }
 
 #Preview {

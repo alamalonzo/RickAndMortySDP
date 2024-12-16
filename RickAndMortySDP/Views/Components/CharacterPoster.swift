@@ -2,7 +2,7 @@
 //  CharacterPoster.swift
 //  RickAndMortySDP
 //
-//  Created by Alam Alonzo on 9/12/24.
+//  Created by  on 9/12/24.
 //
 
 import SwiftUI

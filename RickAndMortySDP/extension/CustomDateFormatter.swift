@@ -2,7 +2,7 @@
 //  CustomDateFormatter.swift
 //  RickAndMortySDP
 //
-//  Created by Alam Alonzo on 26/11/24.
+//  Created by  on 26/11/24.
 //
 
 import Foundation

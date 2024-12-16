@@ -2,7 +2,7 @@
 //  NetworkRepository.swift
 //  RickAndMortySDP
 //
-//  Created by Alam Alonzo on 27/11/24.
+//  Created by  on 27/11/24.
 //
 
 import Foundation
